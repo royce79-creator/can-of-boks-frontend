@@ -7,11 +7,10 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import LoginButton from './LoginButton';
-import LogoutButton from './LogoutButton';
 import { withAuth0 } from '@auth0/auth0-react';
 import Profile from './Profile';
-import Bookshelf from './Bookshelf'
+import BestBooks from './BestBooks'
+import Login from './Login'
 
 class App extends React.Component {
 
@@ -26,18 +25,16 @@ class App extends React.Component {
       <>
         <Router>
           <IsLoadingAndError>
-            <Header />
+            <Header isAuthenticated={isAuthenticated}/>
             <h1>Hello World!!!!</h1>
             <Switch>
               <Route exact path="/">
-                {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
-                {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+                {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */
+                isAuthenticated ? <BestBooks /> : <Login />}
               </Route>
               <Route exact path="/profile">
                 {isAuthenticated ? <Profile /> : ''}
               </Route>
-              {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
-                {isAuthenticated ? <Bookshelf /> : ''}
             </Switch>
             <Footer />
           </IsLoadingAndError>
