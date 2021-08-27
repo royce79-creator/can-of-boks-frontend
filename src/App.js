@@ -11,6 +11,8 @@ import { withAuth0 } from '@auth0/auth0-react';
 import Profile from './Profile';
 import BestBooks from './BestBooks'
 import Login from './Login'
+import Modal from 'react-bootstrap/Modal';
+import BookFormModal from './BookFormModal';
 
 class App extends React.Component {
 
@@ -35,6 +37,9 @@ class App extends React.Component {
               <Route exact path="/profile">
                 {isAuthenticated ? <Profile /> : ''}
               </Route>
+              {/* <Modal> */}
+                {/* <BookFormModal /> */}
+              {/* </Modal> */}
             </Switch>
             <Footer />
           </IsLoadingAndError>
